@@ -1,5 +1,11 @@
 # Sistema De Cadastro
  
+ admin Login:
+ username: username
+ email: email@adress.com
+ password: password
+
+ 
 ``` 
 pip install virtualenv
 
