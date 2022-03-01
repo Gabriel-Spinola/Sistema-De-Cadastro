@@ -7,7 +7,9 @@ from django.db import models
 class ToDoList (models.Model):
     name = models.CharField(max_length=200) # Create an atribute, being a char[200]
 
-    def __str__(self):
+    # Used to get the name when asking for the id, good for debugging
+    # i.e. ToDoList.objects.get(id=id) -> <ToDoList: NameUSet>
+    def __str__(self): 
         return self.name
 
 class Item (models.Model):
