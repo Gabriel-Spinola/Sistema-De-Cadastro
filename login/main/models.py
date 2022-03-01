@@ -19,3 +19,6 @@ class Item (models.Model):
 
     def __str__(self):
         return self.text
+
+# Each item added to the database have an increasing id, starting from 1
+# i.e. if we have 1 item, the id will be 1, 2 items id 2...

@@ -7,7 +7,8 @@ def index(response, id):
     ls = ToDoList.objects.get(id=id)
     item = ls.item_set.get(id=id)
 
-    return HttpResponse('<h1>%s</h1><h2>%s</h2>' % (ls.name, str(item.text)))
+    return render(response, 'main/base.html', {})
 
-# Each item added to the database have an increasing id, starting from 1
-# i.e. if we have 1 item, the id will be 1, 2 items id 2...
+def home(response):
+    return render(response, 'main/home.html', {})
+
