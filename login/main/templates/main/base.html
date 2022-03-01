@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Website</title>
+        <title>{% block title %} Default Title {% endblock %}</title>
     </head>
 
     <body>
-
-        <h1>Base Template</h1>    
-
+        <div id="content" name="content">
+            {% block content %} <!--Content Block (Where all content from son pages goes)-->
+            
+            {% endblock %}
+        </div> <!--#content-->
     </body>
 </html>
