@@ -6,20 +6,31 @@
 
     <h1>{{ls.name}}</h1>
 
-    <ul>
+    <form method="post" action="#">
+        {% csrf_token %} <!--Django validation stuff-->
 
-        {% for item in ls.item_set.all %}
-            {% if item.is_complete == True %}
+        <ul>
 
-                <li>{{item.text}} - COMPLETE</li>
+            {% for item in ls.item_set.all %}
+                {% if item.is_complete == True %}
 
-            {% else %}
+                    <li>
+                        <input type="checkbox" value="clicked" name="c{{item.id}}" checked/> {{item.text}}
+                    </li>
 
-                <li>{{item.text}} - INCOMPLETE</li>
-                
-            {% endif %}
-        {% endfor %}
+                {% else %}
 
-    </ul>
+                    <li><input type="checkbox" value="clicked" name="c{{item.id}}"> {{item.text}}</li>
+                    
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+
+        <button type="submit" name="save" value="save">Save</button>
+        <input type="text" name="new"/>
+        <button type="submit" name="newItem" value="newItem">Add Item</button>
+
+    </form>
 
 {% endblock %}
