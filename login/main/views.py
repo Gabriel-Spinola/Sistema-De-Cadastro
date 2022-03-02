@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import ToDoList, Item
-from .forms import CreateNewList
+from .models import ToDoList, User
+from .forms import CreateNewList, CreateNewUser
 
 # Create your views here.
 def index(response, id):
@@ -57,5 +57,25 @@ def create(response):
         'form': form
     })
 
+def sign_up(response):
+    if response.method == 'POST':
+        form = CreateNewUser(response.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            users_list = User(username=username, password=password)
+            users_list.save()
+        
+        return HttpResponseRedirect('/login')
+    else:
+        form = CreateNewUser()
+
+    return render(response, 'main/signup.html', {
+        'form': form
+    })
+
 def login(response):
-    return render(response, 'main/login.html', {})
+    if response.method == 'POST':
+        pass
