@@ -25,7 +25,7 @@ cd SeuCaminhoAtéOPrograma/Sistema-De-Cadastro-main/login
 
 python manage.py runserver
 ```
-URL do site: http://127.0.0.1:8000/register/sign_up/
+4. Entrar no site: http://127.0.0.1:8000/register/sign_up/
 
  ## Como entrar como administrador:
  Após instalar a aplicação, vá até o endereço http://127.0.0.1:8000/admin/:
