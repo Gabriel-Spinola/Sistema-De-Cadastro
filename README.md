@@ -32,5 +32,4 @@ python manage.py runserver
  
  
    username: username <br>
-   email: email@adress.com <br>
    password: password <br>
