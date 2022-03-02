@@ -17,8 +17,6 @@ def home(response):
 
 def create(response):
     if response.method == 'POST':
-        print('\n\n ==== DEBUG: Runned ==== \n\n')
-
         form = CreateNewList(response.POST)
 
         if form.is_valid():
