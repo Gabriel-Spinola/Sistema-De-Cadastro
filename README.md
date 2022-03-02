@@ -18,14 +18,14 @@ virtualenv mypython
 mypthon\Scripts\activate
 ```
 
-2> Instalar o [Django](https://www.djangoproject.com) dentro do virtualenv
+2. Instalar o [Django](https://www.djangoproject.com) dentro do virtualenv
 ```
 cd mypython
 
 pip install django
 ```
 
-E por fim rodar o servidor
+3. E por fim rodar o servidor
 ```
 cd ../
 cd login
