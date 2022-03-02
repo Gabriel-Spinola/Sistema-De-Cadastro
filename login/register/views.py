@@ -14,10 +14,9 @@ def sign_up(response):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            # is_checked = form.cleaned_data['is_checked']
+            #is_checked = form.cleaned_data['is_checked']
 
             if User.objects.filter(username=username).count() >= 1:
-                print(User.objects.filter(username=username, password=password).count())
                 show_error = True
                 error_log = "Usuario já existente"
             else:
@@ -43,9 +42,9 @@ def sign_up(response):
 
 def password_check(passwd): 
     if len(passwd) < 4:
-        return False, 'length should be at least 4'
+        return False, 'A senha tem que ter pelo menos 4 caracteres'
     if len(passwd) > 20:
-        return False, 'length should be not be greater than 8'
+        return False, 'A senha não pode ser maior do que 4 caracteres'
     if not any(char.isdigit() for char in passwd):
         return False, 'Password should have at least one numeral'
     if not any(char.isupper() for char in passwd):
