@@ -9,7 +9,7 @@
 ## Como rodar o programa
  É necessario que você tenha o pyhon 3.9 pra cima e pip instalados
  
- Primeiramente você tem que baixar e roda um virtualenv
+ 1. Você tem que baixar e roda um virtualenv
 ``` 
 pip install virtualenv
 
@@ -18,7 +18,7 @@ virtualenv mypython
 mypthon\Scripts\activate
 ```
 
-Instalar a biblioteca dentro do virtualenv
+2> Instalar o [Django](https://www.djangoproject.com) dentro do virtualenv
 ```
 cd mypython
 
