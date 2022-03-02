@@ -27,6 +27,7 @@ pip install django
 
 E por fim rodar o servidor
 ```
+cd ../
 cd login
 
 python manage.py runserver
