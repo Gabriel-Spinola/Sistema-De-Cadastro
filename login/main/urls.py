@@ -6,5 +6,6 @@ urlpatterns = [
     path('<int:id>', views.index, name='index'), # If home go to views.index page
     path('', views.home, name='home'),
     path('create/', views.create, name='create'),
-    path('sign_up/', views.sign_up, name='sign_up')
+    path('sign_up/', views.sign_up, name='sign_up'),
+    path('login/', views.login, name='login'),
 ]

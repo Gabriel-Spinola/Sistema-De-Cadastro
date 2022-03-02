@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+
+    <h2>Login Page</h2>
+
+    <form method="post" action="/login/">
+        {% csrf_token %} <!--Django validation stuff-->
+        
+        {{form}}
+        <button type="submit" name="sign_up" value="sign_up">Sign Up</button>
+
+    </form>
+
+{% endblock %}
