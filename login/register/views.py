@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import CreateNewUser, Login
 from .models import User
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def sign_up(response):
@@ -23,11 +21,17 @@ def sign_up(response):
                 show_error = True
                 error_log = "Usuario já existente"
             else:
-                show_error = False
-                users_list = User(username=username, password=password)
-                users_list.save()
+                is_password_valid, error = password_check(password)
 
-                return HttpResponseRedirect('/register/login')
+                if not is_password_valid:
+                    show_error = True
+                    error_log = error
+                else:
+                    show_error = False
+                    users_list = User(username=username, password=password)
+                    users_list.save()
+
+                    return HttpResponseRedirect('/register/login')
     else:
         form = CreateNewUser()
 
@@ -37,10 +41,24 @@ def sign_up(response):
         'error_log': error_log,
     })
 
-def password_check():
-    pass
+def password_check(passwd): 
+    if len(passwd) < 4:
+        return False, 'length should be at least 4'
+    if len(passwd) > 20:
+        return False, 'length should be not be greater than 8'
+    if not any(char.isdigit() for char in passwd):
+        return False, 'Password should have at least one numeral'
+    if not any(char.isupper() for char in passwd):
+        return False, 'Password should have at least one uppercase letter'
+    if not any(char.islower() for char in passwd):
+        return False, 'Password should have at least one lowercase letter'
+
+    return True, ''
 
 def login(response):
+    show_error = False
+    error_log = ""
+
     if response.method == 'POST':
         form = Login(response.POST)
 
@@ -52,7 +70,7 @@ def login(response):
                 User.objects.get(username=username, password=password)
 
                 return HttpResponseRedirect('/')
-            except ValueError:
+            except:
                 return HttpResponse('<h2>ERROR</h2>')
     else:
         form = Login()
