@@ -67,16 +67,19 @@ def login(response):
             password = form.cleaned_data['password']
 
             try: 
-                User.objects.get(username=username, password=password)
+                User.objects.get(username__exact=username, password__exact=password)
 
                 return HttpResponseRedirect('/')
             except:
-                return HttpResponse('<h2>ERROR</h2>')
+                show_error = True
+                error_log = "Usuario ou senha incorretos"
     else:
         form = Login()
 
     return render(response, 'register/login.html', {
-        'form': form
+        'form': form,
+        'show_error': show_error,
+        'error_log': error_log,
     })
 
 def log_out(response):
