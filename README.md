@@ -9,7 +9,7 @@ pip install virtualenv
 
 virtualenv mypython
 
-mypthon\Scripts\activate
+mypython\Scripts\activate
 ```
 
 2. Instalar o [Django](https://www.djangoproject.com) dentro do virtualenv
