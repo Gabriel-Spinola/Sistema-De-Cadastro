@@ -29,6 +29,8 @@ python manage.py runserver
 
  ## Como entrar como administrador:
  Após instalar a aplicação, vá até o endereço http://127.0.0.1:8000/admin/:
+ 
+ 
    username: username
    email: email@adress.com
    password: password
