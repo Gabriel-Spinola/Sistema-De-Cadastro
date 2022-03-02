@@ -5,5 +5,6 @@ from . import views # Import views from the current directory
 urlpatterns = [
     path('<int:id>', views.index, name='index'), # If home go to views.index page
     path('', views.home, name='home'),
-    path('create/', views.create, name='create')
+    path('create/', views.create, name='create'),
+    path('login/', views.login, name='login')
 ]

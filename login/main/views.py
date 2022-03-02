@@ -56,3 +56,6 @@ def create(response):
     return render(response, 'main/create.html', {
         'form': form
     })
+
+def login(response):
+    return render(response, 'main/login.html', {})
