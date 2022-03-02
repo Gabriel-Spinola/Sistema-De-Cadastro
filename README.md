@@ -1,11 +1,13 @@
 # Sistema De Cadastro
  
- admin Login:
+ 
+ ## admin Login:
  username: username
  email: email@adress.com
  password: password
 
- 
+## Como rodar o programa
+ Primeiramente é necessario que você tenha o py
 ``` 
 pip install virtualenv
 
