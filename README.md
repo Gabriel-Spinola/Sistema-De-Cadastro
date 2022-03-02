@@ -1,7 +1,7 @@
 # Sistema De Cadastro
  
  
- ## admin Login:
+ ## Como entrar como administrador:
  username: username
  email: email@adress.com
  password: password
