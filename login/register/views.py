@@ -17,7 +17,7 @@ def sign_up(response):
             users_list = User(username=username, password=password)
             users_list.save()
         
-        return HttpResponseRedirect('/login')
+        return HttpResponseRedirect('/register/login')
     else:
         form = CreateNewUser()
 

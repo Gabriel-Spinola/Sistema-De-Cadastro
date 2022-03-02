@@ -1,12 +1,12 @@
-{% extends 'main/base.html' %}
+{% extends 'register/base.html' %}
 
 {% block title %} Login Page {% endblock %}
 
 {% block content %}
 
-    <h2>Login Page</h2>
+    <h2>Sign up</h2>
 
-    <form method="post" action="/sign_up/">
+    <form method="post" action="/register/sign_up/">
         {% csrf_token %} <!--Django validation stuff-->
         
         {{form}}
