@@ -21,7 +21,7 @@ pip install django
 
 3. E por fim rodar o servidor
 ```
-cd SeuCaminhoAtéOPrograma/login
+cd SeuCaminhoAtéOPrograma/Sistema-De-Cadastro-main/login
 
 python manage.py runserver
 ```
