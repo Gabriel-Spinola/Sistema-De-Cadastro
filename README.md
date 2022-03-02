@@ -31,6 +31,6 @@ python manage.py runserver
  Após instalar a aplicação, vá até o endereço http://127.0.0.1:8000/admin/:
  
  
-   username: username
-   email: email@adress.com
-   password: password
+   username: username <br>
+   email: email@adress.com <br>
+   password: password <br>
