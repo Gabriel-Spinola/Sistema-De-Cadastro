@@ -55,6 +55,9 @@ def password_check(passwd):
     return True, ''
 
 def login(response):
+    if response.session.get('is_logged_in') is None:
+        response.session['is_logged_in'] = False
+
     show_error = False
     error_log = ""
 
@@ -67,6 +70,8 @@ def login(response):
 
             try: 
                 User.objects.get(username__exact=username, password__exact=password)
+
+                response.session['is_logged_in'] = True
 
                 return HttpResponseRedirect('/')
             except:

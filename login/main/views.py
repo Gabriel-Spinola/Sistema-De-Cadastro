@@ -1,3 +1,4 @@
+from aiohttp import request
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList
@@ -5,6 +6,13 @@ from .forms import CreateNewList
 
 # Create your views here.
 def index(response, id):
+    if response.session.get('is_logged_in') == None:
+        response.session['is_logged_in'] = False
+        return HttpResponseRedirect('/register/login')
+    elif response.session.get('is_logged_in') == False:
+        return HttpResponseRedirect('/register/login')
+
+
     ls = ToDoList.objects.get(id=id)
 
     if response.method == 'POST':
@@ -29,13 +37,25 @@ def index(response, id):
 
     return render(response, 'main/list.html', {
         # Variables dictionary
-        'ls': ls
+        'ls': ls,
     })
 
 def home(response):
+    if response.session.get('is_logged_in') == None:
+        response.session['is_logged_in'] = False
+        return HttpResponseRedirect('/register/login')
+    elif response.session.get('is_logged_in') == False:
+        return HttpResponseRedirect('/register/login')
+
     return render(response, 'main/home.html', {})
 
 def create(response):
+    if response.session.get('is_logged_in') == None:
+        response.session['is_logged_in'] = False
+        return HttpResponseRedirect('/register/login')
+    elif response.session.get('is_logged_in') == False:
+        return HttpResponseRedirect('/register/login')
+
     # Receive Post method
     if response.method == 'POST': 
         form = CreateNewList(response.POST)
