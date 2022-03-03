@@ -4,32 +4,44 @@
 
 {% block content %}
 
-    <h1>{{ls.name}}</h1>
+    <h2>{{ls.name}}</h2>
 
     <form method="post" action="#">
         {% csrf_token %} <!--Django validation stuff-->
 
-        <ul>
+        {% for item in ls.item_set.all %}
 
-            {% for item in ls.item_set.all %}
-                {% if item.is_complete == True %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        {% if item.is_complete == True %}
 
-                    <li>
-                        <input type="checkbox" value="clicked" name="c{{item.id}}" checked/> {{item.text}}
-                    </li>
+                            <input type="checkbox" value="clicked" name="c{{item.id}}" checked/> 
+                            
+                        {% else %}
 
-                {% else %}
+                            <input type="checkbox" value="clicked" name="c{{item.id}}">
+                            
+                        {% endif %}
+                    </div>
+                </div>
 
-                    <li><input type="checkbox" value="clicked" name="c{{item.id}}"> {{item.text}}</li>
-                    
-                {% endif %}
-            {% endfor %}
+                <input type="text" value="{{item.text}}" class="form-control"/>
 
-        </ul>
+            </div>
 
-        <button type="submit" name="save" value="save">Save</button>
-        <input type="text" name="new"/>
-        <button type="submit" name="newItem" value="newItem">Add Item</button>
+        {% endfor %}
+
+        <div clas="input-group mb-3"> 
+            <div class="input-group-prepend">
+                <input type="text" name="new"/>
+                <button type="submit" name="newItem" value="newItem" class="btn btn-primary">Add Item</button>
+            </div>
+        </div>
+
+        <br>
+
+        <button type="submit" name="save" value="save" class="btn btn-primary center">Save</button>
 
     </form>
 

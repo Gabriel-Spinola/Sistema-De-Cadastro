@@ -3,8 +3,21 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList
 from .forms import CreateNewList
 
+def manage_session(response) -> bool:
+    if response.session.get('is_logged_in') == None:
+        response.session['is_logged_in'] = False
+
+        return True
+    elif response.session.get('is_logged_in') == False:
+        return True
+
+    return False
+
 # Create your views here.
 def index(response, id):
+    if manage_session(response):
+        return HttpResponseRedirect('/register/login')
+
     ls = ToDoList.objects.get(id=id)
 
     if response.method == 'POST':
@@ -29,13 +42,19 @@ def index(response, id):
 
     return render(response, 'main/list.html', {
         # Variables dictionary
-        'ls': ls
+        'ls': ls,
     })
 
 def home(response):
+    if manage_session(response):
+        return HttpResponseRedirect('/register/login')
+
     return render(response, 'main/home.html', {})
 
 def create(response):
+    if manage_session(response):
+        return HttpResponseRedirect('/register/login')
+
     # Receive Post method
     if response.method == 'POST': 
         form = CreateNewList(response.POST)
@@ -56,3 +75,10 @@ def create(response):
     return render(response, 'main/create.html', {
         'form': form
     })
+
+def logout(response):
+    del response.session['is_logged_in']
+
+    return HttpResponseRedirect('/register/login')
+
+    

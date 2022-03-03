@@ -4,20 +4,23 @@
 
 {% block content %} 
 
-    <h2>Create Page</h2>
+    <h2>Lista de Tarefas</h2>
 
-    <form method="post" action="/create/">
+    <form method="post" action="/create/" class="form-group">
         {% csrf_token %} <!--Django validation stuff-->
 
-        <!--
-            {{form.as_table}} - Default
-            {{form.as_p}}
-            {{form.as_ul}}
-        -->
-        {{form.as_p}}
+        <div class="input-group mb-3">
+            <!--
+                {{form.as_table}} - Default
+                {{form.as_p}}
+                {{form.as_ul}}
+            -->
+            <div class="input-group-prepend">
+                <button type="submit" name="save" class="btn btn-primary">Criar Nova Lista</button>
+            </div>
 
-        <button type="submit" name="save">Create New</button>
-
+            {{form.name}}
+        </div>
     </form>
 
 {% endblock %}
