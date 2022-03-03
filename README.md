@@ -17,6 +17,7 @@ mypython\Scripts\activate
 cd mypython
 
 pip install django
+pip install django-crispy-forms
 ```
 
 3. E por fim rodar o servidor
