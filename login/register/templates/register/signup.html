@@ -1,16 +1,25 @@
 {% extends 'register/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %} Login Page {% endblock %}
 
 {% block content %}
 
-    <h2>Sign up</h2>
+    <h2>Cadastro</h2>
 
     <form method="post" action="/register/sign_up/">
         {% csrf_token %} <!--Django validation stuff-->
         
-        {{form}}
-        <button type="submit" name="sign_up" value="sign_up">Sign Up</button>
+        {{form|crispy}} <!--Crispy forms-->
+        <ul class="password-list">
+            <li>Sua senha precisa ter ao menos 8 caracteres.</li>
+            <li>Sua senha precisa ter mais 4 caracteres.</li>
+            <li>É necessario ao menos um número, uma letra maiúscula e uma letra minúscula.</li>
+        </ul>
+        <button type="submit" name="sign_up" value="sign_up" class="btn btn-primary">Cadastrar-se</button>
+
+        <br>
+
         <p>já tem uma conta? Faça <strong><a href="/register/login/">Login</a></strong></p>
 
         {% if show_error %}

@@ -26,3 +26,9 @@ main {
     margin-left: 160px;
     padding: 0 10px;
 }
+
+/** Register **/
+.password-list li {
+    color: #949494;
+    font-size: 14px;
+}
